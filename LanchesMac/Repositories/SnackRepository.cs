@@ -1,6 +1,7 @@
 ﻿using LanchesMac.Context;
 using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Repositories
 {
@@ -11,13 +12,13 @@ namespace LanchesMac.Repositories
         {
             _context = context;
         }
-        public IEnumerable<Snack> Snacks => throw new NotImplementedException();
+        public IEnumerable<Snack> Snacks => _context.Snacks.Include(c => c.Category);
 
-        public IEnumerable<Snack> FavoriteSnacks => throw new NotImplementedException();
+        public IEnumerable<Snack> FavoriteSnacks => _context.Snacks.Where(c => c.IsFavoriteSnack).Include(c => c.Category);
 
         public Snack GetSnackById(int snackId)
         {
-            throw new NotImplementedException();
+            return _context.Snacks.FirstOrDefault(c => c.SnackId == snackId);
         }
     }
 }
