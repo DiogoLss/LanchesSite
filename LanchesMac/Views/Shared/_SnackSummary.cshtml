@@ -1,4 +1,10 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Snack
+
+<div class="col-md-6 col-lg-4">
+    <div>
+        <p><img class="img-fluid" src="@Model.ImageUrl" /></p>
+        <h4>@Model.Name</h4>
+        <h6>Price: @Model.Price.ToString("c")</h6>
+        <p>@Model.ShortDescription</p>
+    </div>
+</div>
