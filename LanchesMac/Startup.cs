@@ -1,4 +1,5 @@
 ﻿using LanchesMac.Context;
+using LanchesMac.Models;
 using LanchesMac.Repositories;
 using LanchesMac.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ public class Startup
 
         services.AddTransient<ISnackRepository, SnackRepository>();
         services.AddTransient<ICategoryRepository, CategoryRepository>();
+        services.AddScoped(sp => BuyCart.GetCart(sp));
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

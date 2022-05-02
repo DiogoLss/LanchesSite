@@ -1,4 +1,5 @@
 ﻿using LanchesMac.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Models
 {
@@ -73,6 +74,27 @@ namespace LanchesMac.Models
             _context.SaveChanges();
             return thisQuantity;
         }
-        //public List<>
+        public List<BuyItemsCart> GetBuyItemsCart()
+        {
+            return BuyItemsCart ??
+                (BuyItemsCart = _context.BuyItemsCart
+                .Where(c => c.BuyCartId == BuyCartId)
+                .Include(s => s.Snack)
+                .ToList());
+        }
+        public void CleanCart()
+        {
+            var cartItems = _context.BuyItemsCart.Where(c => c.BuyCartId == BuyCartId);
+            _context.BuyItemsCart.RemoveRange(cartItems);
+            _context.SaveChanges();
+        }
+        public double GetBuyCartTotal()
+        {
+            var total = _context.BuyItemsCart
+                .Where(c => c.BuyCartId == BuyCartId)
+                .Select(c => c.Snack.Price * c.Quantity)
+                .Sum();
+            return total;
+        }
     }
 }
