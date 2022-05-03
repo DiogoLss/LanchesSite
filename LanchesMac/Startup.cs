@@ -21,7 +21,7 @@ public class Startup
 
         services.AddTransient<ISnackRepository, SnackRepository>();
         services.AddTransient<ICategoryRepository, CategoryRepository>();
-        services.AddScoped(sp => BuyCart.GetCart(sp));
+        services.AddScoped(sp => ShoppingCart.GetCart(sp));
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

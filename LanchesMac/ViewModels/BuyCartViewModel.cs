@@ -2,9 +2,9 @@
 
 namespace LanchesMac.ViewModels
 {
-    public class BuyCartViewModel
+    public class ShoppingCartViewModel
     {
-        public BuyCart BuyCart { get; set; }
+        public ShoppingCart BuyCart { get; set; }
         public double BuyCartTotal { get; set; }
     }
 }

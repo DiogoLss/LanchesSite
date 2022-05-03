@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Models
 {
-    public class BuyCart
+    public class ShoppingCart
     {
         private readonly AppDbContext _context;
 
-        public BuyCart(AppDbContext context)
+        public ShoppingCart(AppDbContext context)
         {
             _context = context;
         }
@@ -15,7 +15,7 @@ namespace LanchesMac.Models
         public string BuyCartId { get; set; }
         public List<BuyItemsCart> BuyItemsCart { get; set; }
 
-        public static BuyCart GetCart(IServiceProvider services)
+        public static ShoppingCart GetCart(IServiceProvider services)
         {
             //define uma sessão
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
@@ -27,7 +27,7 @@ namespace LanchesMac.Models
             session.SetString("cartId", cartId);
 
             //retorna o carrinho com o contexto e o Id atribuido ou obtido
-            return new BuyCart(context)
+            return new ShoppingCart(context)
             {
                 BuyCartId = cartId
             };

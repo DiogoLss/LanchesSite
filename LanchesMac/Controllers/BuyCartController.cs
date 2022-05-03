@@ -5,26 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMac.Controllers
 {
-    public class BuyCartController : Controller
+    public class ShoppingCartController : Controller
     {
         private readonly ISnackRepository _snackRepository;
-        private readonly BuyCart _buyCart;
+        private readonly ShoppingCart _shoppingCart;
 
-        public BuyCartController(ISnackRepository snackRepository, BuyCart buyCart)
+        public ShoppingCartController(ISnackRepository snackRepository, ShoppingCart shoppingCart)
         {
             _snackRepository = snackRepository;
-            _buyCart = buyCart;
+            _shoppingCart = shoppingCart;
         }
 
         public IActionResult Index()
         {
-            var items = _buyCart.GetBuyItemsCart();
-            _buyCart.BuyItemsCart = items;
+            var items = _shoppingCart.GetBuyItemsCart();
+            _shoppingCart.BuyItemsCart = items;
 
-            var buyCartVM = new BuyCartViewModel
+            var buyCartVM = new ShoppingCartViewModel
             {
-                BuyCart = _buyCart,
-                BuyCartTotal = _buyCart.GetBuyCartTotal()
+                BuyCart = _shoppingCart,
+                BuyCartTotal = _shoppingCart.GetBuyCartTotal()
             };
             return View(buyCartVM);
         }
@@ -33,7 +33,7 @@ namespace LanchesMac.Controllers
             var selectedSnack = _snackRepository.Snacks.FirstOrDefault(x => x.SnackId == snackId);
             if(selectedSnack != null)
             {
-                _buyCart.AddToCart(selectedSnack);
+                _shoppingCart.AddToCart(selectedSnack);
             }
             return RedirectToAction("Index");
         }
@@ -42,7 +42,7 @@ namespace LanchesMac.Controllers
             var selectedSnack = _snackRepository.Snacks.FirstOrDefault(x => x.SnackId == snackId);
             if (selectedSnack != null)
             {
-                _buyCart.RemoveFromCart(selectedSnack);
+                _shoppingCart.RemoveFromCart(selectedSnack);
             }
             return RedirectToAction("Index");
         }
