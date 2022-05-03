@@ -1,8 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model HomeViewModel
 
 <div class="text-center">
-    <h1 class="display-4">@ViewData["Title"]</h1>
+    <h1 class="display-4">Home Page</h1>
     <partial name="_Carousel" />
+    <hr />
+<h2>Week's favorite snacks!</h2>
+<h4>Are you hungry?</h4>
+</div>
+<div class="row">
+    @foreach(var item in Model.FavoriteSnacks)
+    {
+        <partial name="_SnackSummary" for="@item"/>
+    }
 </div>
