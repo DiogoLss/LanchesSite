@@ -23,8 +23,8 @@ namespace LanchesMac.Controllers
 
             var buyCartVM = new ShoppingCartViewModel
             {
-                BuyCart = _shoppingCart,
-                BuyCartTotal = _shoppingCart.GetBuyCartTotal()
+                ShoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetBuyCartTotal()
             };
             return View(buyCartVM);
         }

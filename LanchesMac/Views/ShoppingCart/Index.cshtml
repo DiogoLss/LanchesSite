@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model ShoppingCartViewModel
+
+<div class="container">
+    <div class="row">
+        <img src="~/images/Full-Cart-icon.png" />
+        <div>
+            <h4>Shopping Cart</h4>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Snack</th>
+                    <th>Quantity</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model.ShoppingCart.BuyItemsCart)
+                {
+                    <tr>
+                        <td class="text-center">@item.Snack.Name</td>
+                        <td class="text-left">@item.Quantity</td>
+                        <td class="text-right">@item.Snack.Price.ToString("c")</td>
+                        <td class="text-right">
+                            @((item.Quantity * item.Snack.Price).ToString("c"))
+                        </td>
+                        <td class="text-center">
+                        <a asp-controller="ShoppingCart" asp-action="RemoveItemFromCart"
+                        asp-route-snackId="@item.Snack.SnackId">
+                        <img src="~/images/remove.ico" />
+                        </a>
+                       </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total</td>
+                    <td class="text-right">
+                        @Model.ShoppingCartTotal.ToString("C")
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-right">
+            <div class="btn-group">
+                <a class="btn btn-success" asp-controller="Order" asp-action="CheckOut">Finish order</a>
+                <a class="btn btn-primary" asp-controller="Snack" asp-action="List">Keep shopping</a>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
