@@ -13,6 +13,8 @@
     <!--CSS-->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LanchesMac.styles.css" asp-append-version="true" />
+    <!--FONTS AWESOME-->
+    <script src="https://kit.fontawesome.com/2fd96d5326.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -26,6 +28,9 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Snack" asp-action="List">Snacks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
                         <li class="nav-link">
                             @await Component.InvokeAsync("SummaryShoppingCart")

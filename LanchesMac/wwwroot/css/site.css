@@ -16,6 +16,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+/*NAVBAR*/
 .nav-item{
     padding:0 18px;
 }
@@ -24,9 +25,7 @@ body {
     font-family: "Montserrat";
     font-weight: 100;
 }
-.snack-box{
-    width: 700px;
-}
+/*SNACK VIEW*/
 .snack-name {
     font-family: "Ubuntu";
 }
@@ -36,6 +35,6 @@ body {
 .short-description{
     color: #8f8f8f;
 }
-.empty-cart{
+.empty-cart {
     text-align: center;
 }
