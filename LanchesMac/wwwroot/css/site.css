@@ -24,6 +24,18 @@ body {
     font-family: "Montserrat";
     font-weight: 100;
 }
+.snack-box{
+    width: 700px;
+}
+.snack-name {
+    font-family: "Ubuntu";
+}
+.snack-price {
+    font-family: "Montserrat";
+}
+.short-description{
+    color: #8f8f8f;
+}
 .empty-cart{
     text-align: center;
 }
