@@ -1,0 +1,17 @@
+﻿@model ShoppingCartViewModel
+
+@*@if(Model.ShoppingCart.BuyItemsCart.Count > 0)
+{
+    <a asp-controller="ShoppingCart" asp-action="Index">
+        <span> <img src="~/images/cart-5-16.ico" /> </span>
+        <span style="color:white">
+            @Model.ShoppingCart.BuyItemsCart.Count
+        </span>
+    </a>
+}*@
+<a asp-controller="ShoppingCart" asp-action="Index">
+        <span> <img src="~/images/cart-5-16.ico" /> </span>
+        <span style="color:white">
+            @Model.ShoppingCart.BuyItemsCart.Count
+        </span>
+    </a>
