@@ -18,12 +18,12 @@ body {
 }
 /*NAVBAR*/
 .nav-item{
-    padding:0 18px;
+    padding:0 15px;
 }
 .nav-link {
     font-size: 1.2rem;
     font-family: "Montserrat";
-    font-weight: 100;
+    font-weight: 300;
 }
 /*SNACK VIEW*/
 .snack-name {
@@ -34,6 +34,10 @@ body {
 }
 .short-description{
     color: #8f8f8f;
+}
+/*SHOPPING CART*/
+.shoppingcart-image{
+    width: 70px;
 }
 .empty-cart {
     text-align: center;

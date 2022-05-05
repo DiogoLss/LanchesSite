@@ -1,0 +1,23 @@
+﻿<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            @foreach (var category in Model)
+        {
+            <li>
+                <a class="dropdown-item nav-link" asp-controller="Snack" asp-action="List" style="color:black"
+               asp-route-category="@category.CategoryName">@category.CategoryName</a>
+            </li>
+        }
+        <li class="dropdown-divider"></li>
+        <li>
+            <a class="dropdown-item nav-link" asp-controller="Snack" asp-action="List" style="color:black"
+               asp-route-category="">All snacks</a>
+        </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
