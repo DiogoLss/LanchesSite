@@ -24,18 +24,8 @@ namespace LanchesMac.Controllers
             }
             else
             {
-                if (string.Equals("Normal", category, StringComparison.OrdinalIgnoreCase))
-                {
-                    snacks = _snackRepository.Snacks
-                        .Where(l => l.Category.CategoryName.Equals("Normal"))
-                        .OrderBy(l => l.Name);
-                }
-                else
-                {
-                    snacks = _snackRepository.Snacks
-                        .Where(l => l.Category.CategoryName.Equals("Natural"))
-                        .OrderBy(l => l.Name);
-                }
+                snacks = _snackRepository.Snacks
+                    .Where(s => s.Category.CategoryName.Equals(category)).OrderBy(c => c.Name);
                 currentCategory = category;
             }
             var snackListViewModel = new SnackListViewModel
