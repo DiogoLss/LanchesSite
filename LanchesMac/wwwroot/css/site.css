@@ -26,6 +26,12 @@ body {
     font-weight: 100;
 }
 /*SNACK VIEW*/
+.snack-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+}
 .snack-name {
     font-family: "Ubuntu";
 }

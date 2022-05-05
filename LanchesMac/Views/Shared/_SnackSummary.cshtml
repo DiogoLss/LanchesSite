@@ -1,10 +1,14 @@
 ﻿@model Snack
 
-<div class="col-md-6 col-lg-4">
-    <div>
-        <p><img class="img-fluid snack-image" src="@Model.ImageUrl" /></p>
-        <h4 class="snack-name">@Model.Name</h4>
-        <h6 class="snack-price">Price: @Model.Price.ToString("c")</h6>
-        <p class="short-description">@Model.ShortDescription.</p>
+<div class="col-md-6 col-lg-4 card border-secondary">
+    <div class="card border-light">
+        <p><img class="card-image-top snack-image" src="@Model.ImageUrl" /></p>
+            <h4 class="snack-name">
+                <a class="stretched-link" asp-controller="Snack" asp-action="Details" asp-route-snackId="@Model.SnackId">@Model.Name</a>
+            </h4>
+
+            <h6 class="snack-price">Price: @Model.Price.ToString("c")</h6>
+            <p class="short-description">@Model.ShortDescription.</p>
     </div>
+    <a class="btn-secondary btn" id="cartButton" asp-controller="ShoppingCart" asp-action="AddItemToCart" asp-route-snackId="@Model.SnackId">Add to cart</a>
 </div>
