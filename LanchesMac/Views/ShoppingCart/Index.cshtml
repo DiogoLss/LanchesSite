@@ -18,22 +18,31 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Snack</th>
+                    <th class="text-center">Snack</th>
                     <th>Quantity</th>
                     <th class="text-right">Price</th>
                     <th class="text-right">Subtotal</th>
-                    <th></th>
+                    <th>Add one more</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(var item in Model.ShoppingCart.BuyItemsCart)
                 {
                     <tr>
-                        <td class="text-center">@item.Snack.Name</td>
+                        <td class="text-center">
+                            <a asp-controller="Snack" asp-action="Details" asp-route-snackId="@item.Snack.SnackId">@item.Snack.Name</a>
+                            </td>
                         <td class="text-left">@item.Quantity</td>
                         <td class="text-right">@item.Snack.Price.ToString("c")</td>
                         <td class="text-right">
                             @((item.Quantity * item.Snack.Price).ToString("c"))
+                        </td>
+                        <td class="text-center">
+                            <a asp-controller="ShoppingCart" asp-action="AddItemToCart"
+                        asp-route-snackId="@item.Snack.SnackId">
+                        <i class="fa-solid fa-plus fa-2x"></i>
+                        </a>
                         </td>
                         <td class="text-center">
                         <a asp-controller="ShoppingCart" asp-action="RemoveItemFromCart"

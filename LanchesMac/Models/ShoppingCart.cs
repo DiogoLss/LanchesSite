@@ -82,6 +82,13 @@ namespace LanchesMac.Models
                 .Include(s => s.Snack)
                 .ToList());
         }
+        public int AllItems()
+        {
+            int count = 0;
+            var list = _context.BuyItemsCart.Where(c => c.BuyCartId == BuyCartId).ToList();
+            foreach(var item in list) { count += item.Quantity; }
+            return count;
+        }
         public void CleanCart()
         {
             var cartItems = _context.BuyItemsCart.Where(c => c.BuyCartId == BuyCartId);

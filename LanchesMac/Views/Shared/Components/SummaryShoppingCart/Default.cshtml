@@ -12,6 +12,6 @@
 <a asp-controller="ShoppingCart" asp-action="Index">
         <span> <img src="~/images/cart-5-16.ico" /> </span>
         <span style="color:white">
-            @Model.ShoppingCart.BuyItemsCart.Count
+            @Model.ShoppingCart.AllItems()
         </span>
     </a>
