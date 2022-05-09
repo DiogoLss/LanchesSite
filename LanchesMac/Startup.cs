@@ -21,11 +21,13 @@ public class Startup
 
         services.AddTransient<ISnackRepository, SnackRepository>();
         services.AddTransient<ICategoryRepository, CategoryRepository>();
-        services.AddScoped(sp => ShoppingCart.GetCart(sp));
+        services.AddTransient<IOrderRepository, OrderRepository>();
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddScoped(sp => ShoppingCart.GetCart(sp));
 
         services.AddControllersWithViews();
+
         services.AddMemoryCache();
         services.AddSession();
     }

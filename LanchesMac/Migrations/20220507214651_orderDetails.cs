@@ -43,7 +43,7 @@ namespace LanchesMac.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     SnackId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "double(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
