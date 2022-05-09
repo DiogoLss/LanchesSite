@@ -34,7 +34,7 @@ namespace LanchesMac.Models
         [Display(Name="Price")]
         [Column(TypeName ="decimal(6,2)")]
         [Range(1,999.99, ErrorMessage ="Price must be among 1 and 999.99")]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string ImageUrl { get; set; }
         public string ImageThumbnailUrl { get; set; }
         public bool IsFavoriteSnack { get; set; }

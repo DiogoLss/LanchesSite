@@ -95,7 +95,7 @@ namespace LanchesMac.Models
             _context.BuyItemsCart.RemoveRange(cartItems);
             _context.SaveChanges();
         }
-        public double GetBuyCartTotal()
+        public decimal GetBuyCartTotal()
         {
             var total = _context.BuyItemsCart
                 .Where(c => c.BuyCartId == BuyCartId)
