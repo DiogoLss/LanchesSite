@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMac.Controllers
 {
-    public class AcountController : Controller
+    public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        public AcountController(UserManager<IdentityUser> userManager,
+        public AccountController(UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
@@ -25,7 +25,7 @@ namespace LanchesMac.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return View(loginVM);
 
             var user = await _userManager.FindByNameAsync(loginVM.UserName);
