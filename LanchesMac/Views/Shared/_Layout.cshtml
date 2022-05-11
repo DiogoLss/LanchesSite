@@ -26,6 +26,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav ms-auto">
+                        <li>
+                        @await Html.PartialAsync("_LoginPartial")
+                        </li>
+                        <li>
+                            <form class="navbar-form navbar-right" asp-controller="Snack" asp-action="Search" method="get">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search product" name="searchString" value="@ViewData["searchString"]" />
+                                </div>
+                            </form>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
@@ -34,13 +44,6 @@
                         </li>
                         <li class="nav-link">
                             @await Component.InvokeAsync("SummaryShoppingCart")
-                        </li>
-                        <li>
-                            <form class="navbar-form navbar-right" asp-controller="Snack" asp-action="Search" method="get">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search product" name="searchString" value="@ViewData["searchString"]" />
-                                </div>
-                            </form>
                         </li>
                     </ul>
                 </div>
