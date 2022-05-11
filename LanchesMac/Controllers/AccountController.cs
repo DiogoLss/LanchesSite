@@ -45,5 +45,32 @@ namespace LanchesMac.Controllers
             ModelState.AddModelError("", "Failed to login");
             return View(loginVM);
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(LoginViewModel registerVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = registerVM.UserName
+                };
+                var result = await _userManager.CreateAsync(user, registerVM.Password);
+                if (result.Succeeded)
+                {
+                    //await _signInManager.SignInAsync(user,isPersistent:false);
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    this.ModelState.AddModelError("Register", "Error to register the user.");
+                }
+            }
+            return View(registerVM);
+        }
     }
 }
