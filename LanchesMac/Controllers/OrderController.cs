@@ -1,5 +1,6 @@
 ﻿using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMac.Controllers
@@ -13,11 +14,13 @@ namespace LanchesMac.Controllers
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
         }
+        [Authorize]
         [HttpGet]
         public IActionResult Checkout()
         {
             return View();
         }
+        [Authorize]
         [HttpPost]
         public IActionResult CheckOut(Order order)
         {
