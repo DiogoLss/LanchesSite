@@ -50,18 +50,18 @@ namespace LanchesMac.Services
                     _userManager.AddToRoleAsync(user, "Member").Wait();
                 }
             }
-            if (_userManager.FindByEmailAsync("admin@localhost").Result == null)
+            if (_userManager.FindByEmailAsync("admin").Result == null)
             {
                 IdentityUser user = new IdentityUser();
-                user.UserName = "admin@localhost";
-                user.Email = "admin@localhost";
-                user.NormalizedUserName = "ADMIN@LOCALHOST";
-                user.NormalizedEmail = "ADMIN@LOCALHOST";
+                user.UserName = "admin";
+                user.Email = "admin@host";
+                user.NormalizedUserName = "ADMIN";
+                user.NormalizedEmail = "ADMIN@HOST";
                 user.EmailConfirmed = true;
                 user.LockoutEnabled = false;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user, "18082002Diole0@").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "admin0").Result;
                 if (result.Succeeded)
                 {
                     _userManager.AddToRoleAsync(user, "Admin").Wait();
