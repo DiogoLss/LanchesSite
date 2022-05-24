@@ -1,10 +1,21 @@
-﻿@model IEnumerable<LanchesMac.Models.Order>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<LanchesMac.Models.Order>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Orders</h1>
+<form method="get" class="form-inline">
+    <input name="filter" class="form-control" placeholder="filter"
+    value="@Model.RouteValue["Filter"]" />
+    <button type="submit" class="btn btn-info">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+    </button>
+</form>
+Orders Total : @Model.TotalRecordCount
+<div>
+    <vc:pager paging-list="@Model"></vc:pager>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
