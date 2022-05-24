@@ -51,3 +51,12 @@ body {
 .remove-icon{
     width: 30px;
 }
+/*Admin*/
+.crud-link {
+    font-family: "Montserrat";
+    text-decoration:none;
+    color: gray;
+}
+.crud-link:hover{
+    color: black;
+}
