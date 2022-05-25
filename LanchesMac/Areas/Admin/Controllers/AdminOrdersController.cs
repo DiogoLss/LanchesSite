@@ -9,6 +9,7 @@ using LanchesMac.Context;
 using LanchesMac.Models;
 using Microsoft.AspNetCore.Authorization;
 using ReflectionIT.Mvc.Paging;
+using LanchesMac.ViewModels;
 
 namespace LanchesMac.Areas.Admin.Controllers
 {
@@ -21,6 +22,24 @@ namespace LanchesMac.Areas.Admin.Controllers
         public AdminOrdersController(AppDbContext context)
         {
             _context = context;
+        }
+        public IActionResult OrderSnacks(int? id)
+        {
+            var order = _context.Orders
+                .Include(od => od.OrderItems)
+                .ThenInclude(s => s.Snack)
+                .FirstOrDefault(p => p.OrderId == id);
+            if(order == null)
+            {
+                Response.StatusCode = 404;
+                return View("OrderNotFound",id.Value); 
+            }
+            OrderSnackViewModel orderSnacks = new OrderSnackViewModel()
+            {
+                Order = order,
+                orderDetails = order.OrderItems
+            };
+            return View(orderSnacks);
         }
 
         // GET: Admin/AdminOrders
