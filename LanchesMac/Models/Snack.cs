@@ -12,8 +12,8 @@ namespace LanchesMac.Models
         //Name
 
         [Required(ErrorMessage ="Snack's name must be informed.")]
-        [Display(Name ="Snack name.")]
-        [StringLength(80, MinimumLength = 10, ErrorMessage = "the {0} must have at least {1} and a maximum of {2} characters.")]
+        [Display(Name ="snack.")]
+        [StringLength(80, MinimumLength = 10, ErrorMessage = "the {0} must have at least {2} and a maximum of {1} characters.")]
         public string Name { get; set; }
 
         //Short Description

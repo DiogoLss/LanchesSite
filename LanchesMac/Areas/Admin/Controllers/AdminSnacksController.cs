@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LanchesMac.Context;
 using LanchesMac.Models;
 using Microsoft.AspNetCore.Authorization;
+using ReflectionIT.Mvc.Paging;
 
 namespace LanchesMac.Areas.Admin.Controllers
 {
@@ -23,10 +24,21 @@ namespace LanchesMac.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminSnacks
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var appDbContext = _context.Snacks.Include(s => s.Category);
+        //    return View(await appDbContext.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(string filter, int pageindex=1, string sort = "Name")
         {
-            var appDbContext = _context.Snacks.Include(s => s.Category);
-            return View(await appDbContext.ToListAsync());
+            var result = _context.Snacks.Include(s => s.Category).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                result = result.Where(s => s.Name.Contains(filter));
+            }
+            var model = await PagingList.CreateAsync(result, 5, pageindex, sort, "Name");
+            model.RouteValue = new RouteValueDictionary { { "filter",filter } };
+            return View(model);
         }
 
         // GET: Admin/AdminSnacks/Details/5
@@ -80,7 +92,8 @@ namespace LanchesMac.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var snack = await _context.Snacks.FindAsync(id);
+            var snack = await _context.Snacks.Include(s => s.Category)
+                .FirstOrDefaultAsync(m => m.SnackId == id);
             if (snack == null)
             {
                 return NotFound();

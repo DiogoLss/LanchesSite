@@ -7,6 +7,7 @@ namespace LanchesMac.Models
     public class Category
     {
         [Key]
+        [Display(Name ="Category")]
         public int CategoryId { get; set; }
         [StringLength(100, ErrorMessage = "The maximum size is 100 characters.")]
         [Required(ErrorMessage ="Write category's name.")]
