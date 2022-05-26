@@ -1,4 +1,5 @@
-﻿using LanchesMac.Context;
+﻿using LanchesMac.Areas.Admin.services;
+using LanchesMac.Context;
 using LanchesMac.Models;
 using LanchesMac.Repositories;
 using LanchesMac.Repositories.Interfaces;
@@ -38,6 +39,7 @@ public class Startup
         services.AddTransient<ICategoryRepository, CategoryRepository>();
         services.AddTransient<IOrderRepository, OrderRepository>();
         services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+        services.AddScoped<SalesReportService>();
 
         services.AddAuthorization(options =>
         {
