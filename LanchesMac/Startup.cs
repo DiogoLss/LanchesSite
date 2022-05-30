@@ -34,6 +34,7 @@ public class Startup
             options.Password.RequiredLength = 6;
             options.Password.RequiredUniqueChars = 1;
         });
+        services.Configure<ConfigurationImages>(Configuration.GetSection("ConfigurationImagesFolder"));
 
         services.AddTransient<ISnackRepository, SnackRepository>();
         services.AddTransient<ICategoryRepository, CategoryRepository>();
