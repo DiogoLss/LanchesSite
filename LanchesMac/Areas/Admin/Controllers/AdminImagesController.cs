@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.IO;
 
 namespace LanchesMac.Areas.Admin.Controllers
 {
@@ -57,6 +58,35 @@ namespace LanchesMac.Areas.Admin.Controllers
             ViewBag.Files = filePathsName;
 
             return View(ViewData);
+        }
+        public IActionResult GetImages()
+        {
+            FileManagerModel model = new FileManagerModel();
+
+            var userImagesPath = Path.Combine(_hostingEnvironment.WebRootPath, _myConfig.ProductsImagesFolderName);
+
+            DirectoryInfo dir = new DirectoryInfo(userImagesPath);
+            FileInfo[] files = dir.GetFiles();
+
+            model.PathImagesProduct = _myConfig.ProductsImagesFolderName;
+
+            if(files.Length == 0)
+            {
+                ViewData["Error"] = $"There is no file in {userImagesPath}";
+            }
+            model.Files = files;
+            return View(model);
+        }
+        public IActionResult DeleteFile(string fName)
+        {
+            string _deleteImage = Path.Combine(_hostingEnvironment.WebRootPath,_myConfig.ProductsImagesFolderName + "\\", fName);
+
+            if (System.IO.File.Exists(_deleteImage))
+            {
+                System.IO.File.Delete(_deleteImage);
+                ViewData["Deleted"] = $"File(s) deleted: {_deleteImage}";
+            }
+            return View("Index");
         }
     }
 }
