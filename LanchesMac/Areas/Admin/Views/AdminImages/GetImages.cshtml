@@ -10,10 +10,10 @@
     <div class="row">
         @foreach (FileInfo file in Model.Files)
         {
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <img src="~/@caminho/@file.Name" width="125" height="125" title="@file.Name" asp-append-version="true">
                 <div style="padding:10px;text-align:left">
-                    <a href="@Url.Action("DeleteFile","AdminImagens",new { fname=file.Name})">Delete</a>
+                    <a href="@Url.Action("DeleteFile","AdminImages",new { fName=file.Name})">Delete</a>
                 </div>
             </div>
         }
