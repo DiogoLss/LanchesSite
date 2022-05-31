@@ -13,7 +13,7 @@ namespace LanchesMac.Areas.Admin.services
         }
         public List<SnackGraphic> GetSnackSales(int days = 360)
         {
-            var date = DateTime.Now.AddDays(-360);
+            var date = DateTime.Now.AddDays(-days);
 
             var snacks = (from od in _context.OrderDetails
                           join s in _context.Snacks on od.SnackId equals s.SnackId

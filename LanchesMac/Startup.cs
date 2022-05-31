@@ -41,6 +41,7 @@ public class Startup
         services.AddTransient<IOrderRepository, OrderRepository>();
         services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
         services.AddScoped<SalesReportService>();
+        services.AddScoped<SalesGraphicService>();
 
         services.AddAuthorization(options =>
         {
