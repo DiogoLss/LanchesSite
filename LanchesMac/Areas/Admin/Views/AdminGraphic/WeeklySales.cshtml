@@ -1,0 +1,57 @@
+﻿<title>
+    @ViewData["Title"] - Sales Graphic
+</title>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+<script type="text/javascript">
+
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(LoadData);
+
+    function LoadData() {
+        $.ajax({
+            url: '@Url.Action("SnacksSales", "AdminGraphic")',
+            data: {days: 7},
+            dataType: "json",
+            type: "GET",
+            error: function(xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                toastr.error(err.message);
+            },
+            success: function(data) {
+                SnacksSalesGraphic(data);
+                return false;
+            }
+        });
+        return false;
+    }
+
+    function SnacksSalesGraphic(data) {
+        var dataArray = [
+            ['Snack', 'Quantity' , 'Values(R$)']
+        ];
+        $.each(data, function(i, item) {
+            dataArray.push([item.snackName, item.snacksQuantity, item.snacksTotalValue]);
+        });
+        var data = google.visualization.arrayToDataTable(dataArray);
+        var options = {
+            title: 'Snacks - Sales in the last 7 days',
+            chartArea: {
+                width: '70%'
+            },
+            colors: ['#5202b5', '#d2a828'],
+            hAxis: {
+                title: 'Total value (in Reals)',
+                minValue: 0
+            },
+            vAxis: {
+                title: 'Snacks'
+            }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
