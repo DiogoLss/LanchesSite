@@ -19,17 +19,17 @@ namespace LanchesMac.Areas.Admin.Controllers
             return Json(snacksSalesTotal);
         }
         [HttpGet]
-        public IActionResult Index(int days)
+        public IActionResult Index()
         {
             return View();
         }
         [HttpGet]
-        public IActionResult MonthlySales(int days)
+        public IActionResult MonthlySales()
         {
             return View();
         }
         [HttpGet]
-        public IActionResult WeeklySales(int days)
+        public IActionResult WeeklySales()
         {
             return View();
         }
