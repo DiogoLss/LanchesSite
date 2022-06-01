@@ -26,24 +26,26 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav ms-auto">
-                        <li>
-                            <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Home</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminSnacks" asp-action="Index">Products</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminCategories" asp-action="Index">Categories</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminOrders" asp-action="Index">Orders</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminSalesReport" asp-action="Index">Sales report</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminImages" asp-action="Index">Manage images</a>
-                        </li>
+                        <li><a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Home</a></li>
+                        <li><a class="nav-link" asp-area="Admin" asp-controller="AdminSnacks" asp-action="Index">Products</a></li>
+                        <li><a class="nav-link" asp-area="Admin" asp-controller="AdminCategories" asp-action="Index">Categories</a></li>
+                        <li><a class="nav-link" asp-area="Admin" asp-controller="AdminOrders" asp-action="Index">Orders</a></li>
+                        <li><a class="nav-link" asp-area="Admin" asp-controller="AdminSalesReport" asp-action="Index">Sales report</a></li>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Sales Graphics
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <a class="dropdown-item nav-link" asp-area="Admin" asp-controller="AdminGraphic" asp-action="Index">Yearly Sales</a>
+                                        <a class="dropdown-item nav-link" asp-area="Admin" asp-controller="AdminGraphic" asp-action="MonthlySales" asp-route-days="30">Monthly Sales</a>
+                                        <a class="dropdown-item nav-link" asp-area="Admin" asp-controller="AdminGraphic" asp-action="WeeklySales" asp-route-days="7">Weekly Sales</a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <li><a class="nav-link" asp-area="Admin" asp-controller="AdminImages" asp-action="Index">Manage images</a></li>
                     </ul>
                 </div>
             </div>
